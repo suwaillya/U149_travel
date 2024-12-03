@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U149聖地巡禮</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .location-group {
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            max-width: 800px;
+        }
+        .location-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .image-container img {
+            width: 48%;
+            border-radius: 10px;
+        }
+        .map-section {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .map-section img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .map-section a {
+            display: block;
+            margin-top: 5px;
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .map-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>U149聖地巡禮</h1>
+        <p>現實地點 vs 動畫</p>
+		<p>製作by蔡承芫</p>
+    </header>
+
+    <div id="locations"></div>
+
+    <script>
+        // 定義地點名稱陣列
+        const locations = [
+            "金王八幡宮",   // 金王八幡宮
+            "宮益御嶽神社",        // 宮益御嶽神社
+            "豊栄稲荷神社",       // 豊栄稲荷神社
+			"笠森観音"           // 笠森観音
+            
+        ];
+
+        const container = document.getElementById("locations");
+
+        locations.forEach(location => {
+            // 創建地點組的 HTML 結構
+            const locationGroup = document.createElement("div");
+            locationGroup.className = "location-group";
+
+            locationGroup.innerHTML = `
+                <div class="location-header">
+                    <h2>${location}</h2>
+                </div>
+                <div class="image-container">
+                    <img src="data/${location}_real.jpg" alt="${location} 現實圖片">
+                    <img src="data/${location}_anime.jpg" alt="${location} 動畫圖片">
+                </div>
+                <div class="map-section">
+                    <img src="data/${location}_map.jpg" alt="${location} 地圖圖片">
+                    <a href="https://www.google.com/maps?q=${location}" target="_blank">在 Google 地圖中查看</a>
+                </div>
+            `;
+
+            // 將地點組加入主容器
+            container.appendChild(locationGroup);
+        });
+    </script>
+</body>
+</html>
